@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이미지 꾸미기 테스트</title>
+
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/main.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+
+    <script src="./js/jquery-ui.js"></script>
+    <script src="./js/jquery-ui.min.js"></script>
+
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+
+
+</head>
+<body>
+
+    <div id="main_capture">
+        
+        <img src="./img/main_character.png" alt="">
+        
+    </div>
+    <button id="pick">Download</button>
+    <!-- <div id="wrap main_Capture">
+        <div id="main_img">
+            <img src="./img/main_character.png" width="500">
+        </div>
+        <div id="sticker">
+            <div class="dragimg">
+                <img src="./img/01Img.png" alt="" width="100">
+            </div>
+            <div class="dragimg">
+                <img src="./img/02Img.png" alt="" width="100">
+            </div>
+            <div class="dragimg">
+                <img src="./img/03Img.png" alt="" width="100">
+            </div>
+        </div>
+    </div>
+    <input type="button" value="캡쳐" id="button"> -->
+
+    <script>
+
+        $(function(){
+            $("#pick").on("click", function(){
+                
+                html2canvas(document.querySelector('#main_capture'))
+                .then(canvas =>{saveAs(canvas.toDataURL('image/jpg'),"down.jpg");
+                });
+            });
+            
+            function saveAs(uri, filename){
+                let link = document.createElement('a');
+                if(typeof link.download === 'string') {
+                    link.href = uri;
+                    link.download = filename;
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                } else {
+                    window.open(uri);
+                }
+            }
+        });
+
+        // $(".dragimg").draggable({
+        //     cursor:"move",
+        //     stack:".dragimg",
+        //     opacity:0.8
+        // });
+    </script>
+</body>
+</html>

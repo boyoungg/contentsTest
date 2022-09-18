@@ -1,0 +1,19 @@
+#wrap{
+    display: flex;
+}
+
+#main_img{
+    border: solid 1px red;
+    margin: 20px;
+}
+
+#sticker{
+    border: solid 1px red;
+    display: flex;
+    margin: 20px;
+    height: 100px;
+}
+
+#sticker div{
+    border: solid 1px blue;
+}
